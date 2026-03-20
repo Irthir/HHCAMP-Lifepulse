@@ -1,0 +1,22 @@
+J ai 3 vue a realiser , patient , aidons , medecin .
+
+3 vue : 
+
+Patient : 
+- Taches : Question reponse  (Agent conversationnel)
+- Evemenets deja connu (Excels)
+- On s interesse au domaine generale ( diete , activité pgysique , qualité de sommeil )
+- le modele dialogue avec le patient pour recuperer les event
+- Le modele a acces a l historique du patient (prend en compte les evenements deja recuperer des conversation 
+ancienne du patient )
+- Pour le score , a partir de  l historique il peut calculer une frequence d apparition des evenements. 
+- Sortie du modele : le ou les evenements / echells d evaluation
+
+Aidant : 
+- Agent conversationnel
+- Redige l etat du patient (cas ou il est impossible au patient de le faire, maladie , oublie .. )
+- Voir son historique et non celui du patient (historique patient non visible)
+
+Medecin : 
+- Historique du patient 
+- Aggregation / Resume de rapport ( du patient + celui de son aidant)
