@@ -1,11 +1,19 @@
 from fastapi import FastAPI
-from app.routes import chat, history
+from fastapi.middleware.cors import CORSMiddleware
 
+# ✅ 1. créer l'app AVANT tout
 app = FastAPI()
 
-app.include_router(chat.router, prefix="/chat")
-app.include_router(history.router, prefix="/history")
+# ✅ 2. ensuite ajouter les middlewares
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
+# ✅ 3. routes après
 @app.get("/")
-def root():
+def read_root():
     return {"message": "API running"}
