@@ -4,9 +4,6 @@ import os
 HISTORY_FILE = "history.json"
 
 
-# -----------------------------
-# 🔹 Charger historique
-# -----------------------------
 def load_history():
     if not os.path.exists(HISTORY_FILE):
         return []
@@ -15,40 +12,38 @@ def load_history():
         return json.load(f)
 
 
-# -----------------------------
-# 🔹 Sauvegarder événements
-# -----------------------------
 def save_events(events):
     history = load_history()
 
-    # 🔥 Ajouter sans écraser
-    history.extend(events)
+    # 🔥 éviter doublons par ID
+    existing_ids = {e["id"] for e in history}
+
+    for e in events:
+        if "partage" not in e:
+            e["partage"] = "N"
+
+        if e["id"] not in existing_ids:
+            history.append(e)
 
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, indent=2, ensure_ascii=False)
 
 
-# -----------------------------
-# 🔹 Vue patient (format front)
-# -----------------------------
 def get_patient_history():
     events = load_history()
 
     return [
         {
-            "id": e["id"],
-            "date": e["date"],
-            "titre": e["titre"],
-            "description": e["complement"],  # mapping front
-            "partage": e["partage"]
+            "id": e.get("id"),
+            "date": e.get("date"),
+            "titre": e.get("titre"),
+            "description": e.get("complement"),
+            "partage": e.get("partage", "N")
         }
         for e in events
     ]
 
 
-# -----------------------------
-# 🔹 Update consentement
-# -----------------------------
 def update_consent(event_id, consent):
     events = load_history()
 
@@ -60,3 +55,7 @@ def update_consent(event_id, consent):
         json.dump(events, f, indent=2, ensure_ascii=False)
 
     return {"status": "updated"}
+
+def clear_history():
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump([], f)

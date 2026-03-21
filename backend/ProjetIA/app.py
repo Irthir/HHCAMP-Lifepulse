@@ -4,7 +4,7 @@ from history import (
     save_events,
     get_patient_view,
     get_doctor_view,
-    update_event_consent
+    update_event_consent_by_id
 )
 import json
 
@@ -30,7 +30,6 @@ def main():
         else:
             continue
 
-        # 🔹 extraction avec ID
         events, current_id = extract_events({
             "text": text,
             "date": msg["date"]
@@ -55,12 +54,12 @@ def main():
 
         print("\n🔒 Choisissez quels événements partager :\n")
 
-        for i, e in enumerate(events):
-            print(f"{i} → {e['titre']} → {e['complement']}")
+        for e in events:
+            print(f"{e['id']} → {e['titre']} → {e['complement']}")
             choice = input("Partager ? (oui/non): ")
 
-            consent = "O" if choice.lower() == "oui" else "N"
-            update_event_consent(i, consent)
+            shared = True if choice.strip().lower() == "oui" else False
+            update_event_consent_by_id(e["id"], shared)
 
         print("\n===== 🩺 Vue Médecin =====\n")
         doctor_data = get_doctor_view()

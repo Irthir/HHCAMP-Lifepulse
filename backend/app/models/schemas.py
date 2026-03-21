@@ -6,4 +6,4 @@ class ChatInput(BaseModel):
 
 
 class ConsentInput(BaseModel):
-    consent: str
+    consent: bool

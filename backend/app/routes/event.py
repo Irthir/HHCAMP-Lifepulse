@@ -1,9 +1,50 @@
 from fastapi import APIRouter
-from app.models.schemas import ConsentInput
-from app.services.history_service import update_consent
+from datetime import datetime
+from pydantic import BaseModel
+
+from app.services.history_service import (
+    save_events,
+    load_history
+)
+from src.extractor import extract_events
 
 router = APIRouter()
 
-@router.post("/event/{event_id}/consent")
-def consent(event_id: str, data: ConsentInput):
-    return update_consent(event_id, data.consent)
+
+class Message(BaseModel):
+    text: str
+    date: str | None = None
+
+
+@router.post("/chat")
+def chat_endpoint(msg: Message):
+
+    date = msg.date or datetime.now().isoformat()
+
+    # 🔥 1. récupérer historique
+    history = load_history()
+
+    # 🔥 2. calcul ID dynamique
+    start_id = len(history) + 1
+
+    # 🔥 3. extraction avec ID unique
+    events, _ = extract_events({
+        "text": msg.text,
+        "date": date
+    }, start_id=start_id)
+
+    # 🔥 4. sauvegarde
+    if events:
+        save_events(events)
+
+    return {
+        "message": msg.text,
+        "events_detected": events
+    }
+
+from app.services.history_service import clear_history
+
+@router.delete("/history")
+def delete_history():
+    clear_history()
+    return {"status": "history cleared"}

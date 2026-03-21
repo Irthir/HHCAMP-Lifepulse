@@ -1,5 +1,3 @@
-# src/data.py
-
 from datetime import datetime, timedelta
 
 def get_conversation():
@@ -7,19 +5,23 @@ def get_conversation():
 
     return [
         {
-            "text": "Bonjour, je me sens très fatigué ces derniers jours",
+            "question": "Comment vous sentez-vous ces derniers jours ?",
+            "answer": "Je suis très fatigué et stressé",
             "date": (base_time - timedelta(days=3)).isoformat()
         },
         {
-            "text": "Depuis environ une semaine, et je dors mal",
+            "question": "Comment se passe votre sommeil ?",
+            "answer": "Je dors mal et je me réveille souvent",
             "date": (base_time - timedelta(days=2)).isoformat()
         },
         {
-            "text": "J’ai beaucoup de stress au travail et je fais moins de sport",
+            "question": "Avez-vous changé vos habitudes alimentaires ?",
+            "answer": "Je mange beaucoup de snacks",
             "date": (base_time - timedelta(days=1)).isoformat()
         },
         {
-            "text": "Je mange plus de snacks et moins équilibré",
+            "question": "Faites-vous du sport ?",
+            "answer": "J’ai arrêté le sport",
             "date": base_time.isoformat()
         }
     ]
