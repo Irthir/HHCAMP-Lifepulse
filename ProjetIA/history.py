@@ -8,12 +8,11 @@ HISTORY_FILE = "history.json"
 
 def save_events(events):
     """
-    Sauvegarde les événements avec shared=False par défaut
+    Sauvegarde les événements avec partage = "N" par défaut
     """
-    # 🔹 on s'assure que chaque event a le champ shared
     for e in events:
-        if "shared" not in e:
-            e["shared"] = False
+        if "partage" not in e:
+            e["partage"] = "N"
 
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(events, f, indent=2, ensure_ascii=False)
@@ -32,12 +31,13 @@ def load_history():
 
 def update_event_consent(index, consent):
     """
-    Met à jour le consentement d'un événement spécifique
+    Met à jour le consentement d'un événement
+    consent = "O" ou "N"
     """
     events = load_history()
 
     if 0 <= index < len(events):
-        events[index]["shared"] = consent
+        events[index]["partage"] = consent
 
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(events, f, indent=2, ensure_ascii=False)
@@ -56,7 +56,7 @@ def get_doctor_view():
     """
     events = load_history()
 
-    shared_events = [e for e in events if e.get("shared")]
+    shared_events = [e for e in events if e.get("partage") == "O"]
 
     if not shared_events:
         return "❌ Aucun événement partagé"

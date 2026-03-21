@@ -1,37 +1,37 @@
 [
   {
-    "date": "2026-03-18T16:52:17.500674",
-    "type": "fatigue",
-    "score": 8,
+    "id": "00001",
+    "date": "2026-03-18",
+    "titre": "fatigue",
     "complement": "Bonjour, je me sens très fatigué ces derniers jours",
-    "shared": false
+    "partage": "O"
   },
   {
-    "date": "2026-03-19T16:52:17.500674",
-    "type": "sommeil perturbé",
-    "score": 7,
+    "id": "00002",
+    "date": "2026-03-19",
+    "titre": "sommeil perturbé",
     "complement": "Depuis environ une semaine, et je dors mal",
-    "shared": false
+    "partage": "N"
   },
   {
-    "date": "2026-03-20T16:52:17.500674",
-    "type": "stress",
-    "score": 10,
+    "id": "00003",
+    "date": "2026-03-20",
+    "titre": "stress",
     "complement": "J’ai beaucoup de stress au travail et je fais moins de sport",
-    "shared": false
+    "partage": "N"
   },
   {
-    "date": "2026-03-20T16:52:17.500674",
-    "type": "baisse activité physique",
-    "score": 7,
+    "id": "00004",
+    "date": "2026-03-20",
+    "titre": "baisse activité physique",
     "complement": "J’ai beaucoup de stress au travail et je fais moins de sport",
-    "shared": false
+    "partage": "N"
   },
   {
-    "date": "2026-03-21T16:52:17.500674",
-    "type": "changement alimentaire",
-    "score": 8,
+    "id": "00005",
+    "date": "2026-03-21",
+    "titre": "changement alimentaire",
     "complement": "Je mange plus de snacks et moins équilibré",
-    "shared": false
+    "partage": "N"
   }
 ]

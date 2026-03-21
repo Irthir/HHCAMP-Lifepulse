@@ -2,13 +2,15 @@
 
 def compute_risk(events):
     """
-    Score global patient basé sur nombre d'événements
+    Niveau de risque basé sur le nombre d'événements
     """
-    score = len(events) * 10
+    score = len(events)
 
-    if score < 20:
+    if score == 0:
+        status = "Aucun"
+    elif score <= 2:
         status = "Faible"
-    elif score < 50:
+    elif score <= 4:
         status = "Modéré"
     else:
         status = "Élevé"
@@ -20,8 +22,4 @@ def format_event(event):
     """
     Formatage propre pour affichage
     """
-    return (
-        f"- {event['event'].upper()} "
-        f"(score: {event['confidence']}) "
-        f"→ '{event['source']}'"
-    )
+    return f"- {event['type'].upper()} → '{event['complement']}'"

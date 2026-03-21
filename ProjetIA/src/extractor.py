@@ -1,7 +1,5 @@
 # src/extractor.py
 
-import random
-
 EVENT_KEYWORDS = {
     "fatigue": ["fatigué", "fatigue", "épuisé"],
     "sommeil perturbé": ["dors mal", "insomnie"],
@@ -10,36 +8,28 @@ EVENT_KEYWORDS = {
     "changement alimentaire": ["snacks", "mange plus", "mal manger"]
 }
 
-EVENT_SCORE_RANGE = {
-    "fatigue": (5, 8),
-    "sommeil perturbé": (6, 9),
-    "stress": (7, 10),
-    "baisse activité physique": (4, 7),
-    "changement alimentaire": (5, 8)
-}
 
-
-def compute_score(event_type):
-    min_s, max_s = EVENT_SCORE_RANGE.get(event_type, (3, 7))
-    return random.randint(min_s, max_s)
-
-
-def extract_events(message):
+def extract_events(message, start_id=1):
     text = message["text"].lower()
-    date = message["date"]
+    raw_date = message["date"]
+
+    # 🔹 format date propre
+    date = raw_date.split("T")[0]
 
     events = []
+    current_id = start_id
 
     for event_type, keywords in EVENT_KEYWORDS.items():
         for kw in keywords:
             if kw in text:
                 events.append({
+                    "id": str(current_id).zfill(5),
                     "date": date,
-                    "type": event_type,
-                    "score": compute_score(event_type),
-                    "complement": message["text"] ,
-                     "shared": False 
+                    "titre": event_type,
+                    "complement": message["text"],
+                    "partage": "N"
                 })
+                current_id += 1
                 break
 
-    return events
+    return events, current_id
