@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = "https://hhcamp-lifepulse.onrender.com";
 
 export async function sendMessage(message) {
   const res = await fetch(`${API_URL}/chat/`, {
