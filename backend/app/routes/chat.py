@@ -1,16 +1,25 @@
+# routes/chat.py
+
 from fastapi import APIRouter
 from pydantic import BaseModel
-from app.services.ai_service import generate_response
+from app.services.ai_service import process_message
+from datetime import datetime
 
 router = APIRouter()
 
-class ChatRequest(BaseModel):
-    message: str
+class Message(BaseModel):
+    text: str
+    date: str | None = None
 
-class ChatResponse(BaseModel):
-    response: str
 
-@router.post("/", response_model=ChatResponse)
-def chat(req: ChatRequest):
-    response = generate_response(req.message)
-    return {"response": response}
+@router.post("/")
+def chat(msg: Message):
+
+    date = msg.date or datetime.now().isoformat()
+
+    events = process_message(msg.text, date)
+
+    return {
+        "input": msg.text,
+        "events": events
+    }
