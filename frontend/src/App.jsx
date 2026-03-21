@@ -1,4 +1,7 @@
-import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import Login from "./pages/Login";
 import Patient from "./pages/Patient";
 import Aidant from "./pages/Aidant";
 import Pro from "./pages/Pro";
@@ -12,15 +15,30 @@ function setTheme(role) {
 }
 
 export default function App() {
-  const role = localStorage.getItem("role") || "patient";
+  const [role, setRole] = useState(localStorage.getItem("role"));
 
   useEffect(() => {
-    setTheme(role);
+    if (role) setTheme(role);
   }, [role]);
 
-  if (role === "patient") return <Patient />;
-  if (role === "aidant") return <Aidant />;
-  if (role === "pro") return <Pro />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login setRole={setRole} />} />
 
-  return <Patient />;
+        <Route
+          path="/patient"
+          element={role === "patient" ? <Patient /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/aidant"
+          element={role === "aidant" ? <Aidant /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/pro"
+          element={role === "pro" ? <Pro /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }

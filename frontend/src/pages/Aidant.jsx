@@ -6,6 +6,11 @@ import Badge from "../components/ui/Badge";
 export default function Aidant() {
   return (
     <div>
+      <div className="header">
+        <h2>My Healin</h2>
+        <div className="avatar">A</div>
+      </div>
+      
       <div style={{ padding: 20, display: "flex", justifyContent: "space-between" }}>
         <h2>Suivi proche</h2>
         <Avatar name="Marie" />

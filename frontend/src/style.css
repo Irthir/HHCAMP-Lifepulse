@@ -29,21 +29,21 @@ body {
 /* CARD */
 .card {
   background: white;
-  border-radius: var(--radius);
+  border-radius: 20px;
   padding: 20px;
   margin: 15px;
-  border: 2px solid var(--primary);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  transition: var(--transition);
-}
-
-.card:hover {
-  transform: translateY(-3px);
+  border: 1px solid #eee;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 .card-title {
   color: var(--primary);
+  font-weight: 600;
   margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
 }
 
 /* BUTTON */
@@ -120,4 +120,26 @@ button {
 
 .message.bot {
   background: #eee;
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 200px;
+}
+
+.login-buttons button {
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 16px;
 }
