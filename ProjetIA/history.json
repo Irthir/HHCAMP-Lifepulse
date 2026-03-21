@@ -1,0 +1,37 @@
+[
+  {
+    "date": "2026-03-18T16:52:17.500674",
+    "type": "fatigue",
+    "score": 8,
+    "complement": "Bonjour, je me sens très fatigué ces derniers jours",
+    "shared": false
+  },
+  {
+    "date": "2026-03-19T16:52:17.500674",
+    "type": "sommeil perturbé",
+    "score": 7,
+    "complement": "Depuis environ une semaine, et je dors mal",
+    "shared": false
+  },
+  {
+    "date": "2026-03-20T16:52:17.500674",
+    "type": "stress",
+    "score": 10,
+    "complement": "J’ai beaucoup de stress au travail et je fais moins de sport",
+    "shared": false
+  },
+  {
+    "date": "2026-03-20T16:52:17.500674",
+    "type": "baisse activité physique",
+    "score": 7,
+    "complement": "J’ai beaucoup de stress au travail et je fais moins de sport",
+    "shared": false
+  },
+  {
+    "date": "2026-03-21T16:52:17.500674",
+    "type": "changement alimentaire",
+    "score": 8,
+    "complement": "Je mange plus de snacks et moins équilibré",
+    "shared": false
+  }
+]

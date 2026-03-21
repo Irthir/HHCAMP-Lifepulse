@@ -4,7 +4,7 @@ J ai 3 vue a realiser , patient , aidons , medecin .
 
 Patient : 
 - Taches : Question reponse  (Agent conversationnel)
-- On s interesse au domaine generale ( diete , activité pgysique , qualité de sommeil )
+- On s interesse au domaine generale ( diete , activité pgysique , qualité de sommeil , psychosocial )
 - le modele dialogue avec le patient pour recuperer les event ? (question ouverte ou fermer )  
 - Le modele a acces a l historique du patient (prend en compte les evenements deja recuperer des conversation 
 ancienne du patient )
