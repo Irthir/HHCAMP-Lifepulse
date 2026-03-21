@@ -8,13 +8,13 @@ export default function BottomNav({ role }) {
       { to: "/patient/care", label: "Parcours de soins", icon: "🩺" },
       { to: "/patient/health", label: "Carnet de santé", icon: "📋" },
     ],
-    doctor: [
-      { to: "/doctor/home", label: "Communautés", icon: "💬" },
-      { to: "/doctor/patients", label: "Patients", icon: "👤" },
+    pro: [
+      { to: "/pro/communities", label: "Communautés", icon: "💬" },
+      { to: "/pro/patients", label: "Patients", icon: "👤" },
     ],
-    helper: [
-      { to: "/helper/home", label: "Suivi", icon: "💚" },
-      { to: "/helper/patient", label: "Patient", icon: "👤" },
+    aidant: [
+      { to: "/aidant/home", label: "Suivi", icon: "💚" },
+      { to: "/aidant/communities", label: "Patient", icon: "👤" },
     ],
   };
 
