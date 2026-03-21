@@ -163,3 +163,93 @@ body.role-doctor .nav-item.active {
 body.role-helper .nav-item.active {
   color: #22c55e;
 }
+
+/* Container principal */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 90%; /* prendra le height du parent flex */
+  background: #f8f9fc;
+  overflow: hidden; /* éviter scroll du container global */
+}
+
+/* Messages scrollables */
+.chat-messages {
+  flex: 1; /* prend tout l'espace restant au-dessus de l'input */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 8px;
+  padding-bottom: 80px; /* 🔥 espace pour le footer */
+}
+
+/* Bulles de message */
+.message {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  word-break: break-word;
+  font-size: 14px;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--blue-soft);
+  color: var(--blue);
+  border-top-right-radius: 4px;
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.message.bot {
+  align-self: flex-start;
+  background: #eef0ff;
+  color: var(--text);
+  border-top-left-radius: 4px;
+  border-top-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+/* Input fixé en bas */
+.chat-input-container {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  background: #f8f9fc;
+}
+
+.chat-input-container input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+}
+
+.chat-input-container button {
+  padding: 0 20px;
+  border-radius: var(--radius);
+  background: var(--blue);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.chat-input-container button:hover {
+  background: #3b5cd1;
+}
+
+/* Scroll automatique */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
