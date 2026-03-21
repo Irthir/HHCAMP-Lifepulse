@@ -1,7 +1,4 @@
 import { useEffect } from "react";
-import Patient from "./pages/Patient";
-import Aidant from "./pages/Aidant";
-import Pro from "./pages/Pro";
 
 function setTheme(role) {
   document.body.className = "";
@@ -12,15 +9,14 @@ function setTheme(role) {
 }
 
 export default function App() {
-  const role = localStorage.getItem("role") || "patient";
-
   useEffect(() => {
+    const role = localStorage.getItem("role") || "patient";
     setTheme(role);
-  }, [role]);
+  }, []);
 
-  if (role === "patient") return <Patient />;
-  if (role === "aidant") return <Aidant />;
-  if (role === "pro") return <Pro />;
-
-  return <Patient />;
+  return (
+    <>
+      {/* ton routing */}
+    </>
+  );
 }
