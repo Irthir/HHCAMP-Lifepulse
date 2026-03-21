@@ -1,0 +1,19 @@
+# Environnement virtuel
+ProjetIA/.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Fichiers temporaires
+.DS_Store
+Thumbs.db
+
+# Modèles ML
+*.joblib
+
+# Données lourdes (optionnel)
+ProjetIA/Data/trained/
