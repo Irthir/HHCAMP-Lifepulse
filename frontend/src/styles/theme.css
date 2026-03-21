@@ -1,0 +1,102 @@
+:root {
+  --blue: #3f6ad8;
+  --yellow: #f4a300;
+  --green: #2fbf71;
+  --bg: #f5f6fa;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Buttons */
+.role-btn {
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.role-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Themes */
+.blue { background: #e7efff; color: var(--blue); }
+.yellow { background: #fff4e0; color: var(--yellow); }
+.green { background: #e6f7ef; color: var(--green); }
+
+:root {
+  --blue: #4f7df3;
+  --blue-soft: #eef3ff;
+
+  --yellow: #f5a623;
+  --yellow-soft: #fff6e6;
+
+  --green: #35b67a;
+  --green-soft: #e9f8f1;
+
+  --text: #2c2c2c;
+  --muted: #8a8a8a;
+
+  --radius: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #f6f7fb;
+}
+
+/* Card générique */
+.card {
+  border-radius: var(--radius);
+  padding: 16px;
+  background: white;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* Header coloré (comme Flutter) */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* Avatar lettre */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border: 2px solid currentColor;
+}
+
+/* Progress bar */
+.progress {
+  height: 6px;
+  border-radius: 6px;
+  background: #ddd;
+  overflow: hidden;
+}
+
+.progress-inner {
+  height: 100%;
+}

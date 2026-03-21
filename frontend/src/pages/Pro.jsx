@@ -1,5 +1,5 @@
 import Card from "../components/ui/Card";
-import BottomNav from "../components/ui/BottomNav";
+import BottomNav from "../components/BottomNav";
 import Avatar from "../components/ui/Avatar";
 import Badge from "../components/ui/Badge";
 
