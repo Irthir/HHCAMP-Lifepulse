@@ -4,13 +4,14 @@ J ai 3 vue a realiser , patient , aidons , medecin .
 
 Patient : 
 - Taches : Question reponse  (Agent conversationnel)
-- Evemenets deja connu (Excels)
 - On s interesse au domaine generale ( diete , activité pgysique , qualité de sommeil )
-- le modele dialogue avec le patient pour recuperer les event
+- le modele dialogue avec le patient pour recuperer les event ? (question ouverte ou fermer )  
 - Le modele a acces a l historique du patient (prend en compte les evenements deja recuperer des conversation 
 ancienne du patient )
 - Pour le score , a partir de  l historique il peut calculer une frequence d apparition des evenements. 
-- Sortie du modele : le ou les evenements / echells d evaluation
+- Sortie du modele : le ou les evenements + score(frequence) + echells d evaluation du score 
+- Le modele à un historique des evenements passé , et peux poser des question sur ca pour le patient 
+
 
 Aidant : 
 - Agent conversationnel
@@ -18,5 +19,171 @@ Aidant :
 - Voir son historique et non celui du patient (historique patient non visible)
 
 Medecin : 
-- Historique du patient 
-- Aggregation / Resume de rapport ( du patient + celui de son aidant)
+- Historique du patient (Résumé lors des consultations precedente)
+- Aggregation( du patient + celui de son aidant) = Resume de rapport preconsultation , accesbible par le medecin lors du 2nd rdv 
+- Ce rapport de preconsultation peut etre mise a jours , par les anciennes rapport (elle suis l etat des evenements du patient dans le temps )
+
+
+
+
+Architecture des 3 vues – LifePulse
+1. Vue Patient
+
+Objectif : Collecter automatiquement les événements de vie influençant la santé via un agent conversationnel.
+
+🔹 Fonctionnalités
+
+Interface de question-réponse (agent conversationnel)
+
+Exploration de domaines généraux :
+
+- Alimentation
+- Activité physique
+- Qualité du sommeil
+- Stress / mode de vie
+
+🔹 Fonctionnement du modèle
+
+Dialogue avec le patient via :
+
+- Questions ouvertes (ex : Comment vous sentez-vous ces derniers jours ?)
+- Questions fermées (ex : Avez-vous moins dormi cette semaine ?)
+
+Exploitation de l’historique conversationnel :
+
+- Prise en compte des événements déjà détectés
+- Suivi longitudinal du patient
+
+🔹 Analyse et scoring
+
+- Identification automatique des événements (ex : stress, fatigue…)
+- Calcul d’un score basé sur la fréquence d’apparition
+- Association à une échelle d’évaluation (faible / modéré / élevé)
+
+🔹 Sortie du modèle
+
+- Liste des événements détectés
+- Score associé à chaque événement
+- Interprétation du score (niveau de risque ou d’impact)
+
+🔹 Intelligence contextuelle
+
+- Le modèle peut :
+
+    - Revenir sur des événements passés
+    - Poser des questions ciblées pour affiner l’analyse
+
+2. Vue Aidant
+
+Objectif : Permettre à un tiers de renseigner l’état du patient lorsque celui-ci ne peut pas le faire.
+
+🔹 Fonctionnalités
+
+- Interface avec agent conversationnel
+- Saisie manuelle de l’état du patient :
+
+- Cas de maladie
+-Oubli
+- Incapacité temporaire
+
+🔹 Données accessibles
+
+- Accès uniquement à l’historique de l’aidant
+- ❌ Pas d’accès direct à l’historique du patient (confidentialité)
+
+3. Vue Médecin
+
+Objectif : Fournir une vision synthétique et exploitable pour la prise de décision clinique.
+
+🔹 Fonctionnalités
+
+- Accès à l’historique médical du patient
+    - Résumés des consultations précédentes
+
+🔹 Agrégation des données
+
+- Fusion de :
+
+Données du patient
+Données de l’aidant
+
+➡️ Génération d’un rapport de pré-consultation
+
+🔹 Utilisation clinique
+
+Rapport accessible avant ou lors des consultations
+
+Permet une lecture rapide de l’évolution du patient
+
+🔹 Suivi longitudinal
+
+Les rapports sont :
+
+Mis à jour à chaque consultation
+
+Enrichis par les anciens rapports
+
+➡️ Suivi de l’évolution des événements dans le temps
+
+💡 Résumé global (vision système)
+
+Patient → collecte automatique (IA)
+
+Aidant → saisie complémentaire (humaine)
+
+Médecin → exploitation clinique (agrégation + synthèse)
+
+
+
+doit on se connecter a l appli 
+Question : est ce qu l aidant doit se connecter ou identifier le patient 
+pour qu ils donne des informations concernant l etat du patient ? 
+
+Pour le hackaton doit on utiliser un modele classique  ou ++ LLM (Temps ? )
+
+
+
+
+Patient parle (texte libre)
+        ↓
+LLM → comprend et extrait les événements
+        ↓
+    ["stress", "fatigue"]
+PIPELINE LIFEPULSE → analyse clinique
+        ↓
+{
+  "stress": {
+    "frequence": 3,
+    "niveau": "modéré"
+  }
+}
+Le pipeline :
+
+- agrège patient + aidant
+- structure les infos
+- crée un résumé exploitable
+
+Le LLM est utilisé pour la compréhension du langage naturel, 
+tandis que notre pipeline propriétaire assure l’analyse temporelle,
+ le scoring clinique et la structuration des données patient.”
+
+Le LLM est utilisé pour la compréhension du langage naturel, tandis que notre pipeline propriétaire assure l’analyse temporelle, le scoring clinique et la structuration des données patient.”
+
+Nous avons généré un dataset synthétique représentant des situations patients, 
+puis entraîné un modèle spécialisé pour l’extraction d’événements. 
+Ce modèle est intégré dans un agent conversationnel qui contextualise les données 
+avec un historique pour produire une analyse clinique.”
+
+Texte patient
+   ↓
+NLP Model (classification multi-label)
+   ↓
+Événements structurés
+   ↓
+Mémoire patient (historique)
+   ↓
+Analyse temporelle (pipeline)
+   ↓
+Score clinique
+   ↓
+Agent conversationnel (réponse)

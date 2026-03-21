@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LifePulse - Patient</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>LifePulse</h1>
+
+    <div class="chat-box">
+
+        {% for msg in chat %}
+            <div class="message user">
+                {{ msg.user }}
+            </div>
+    
+            <div class="message bot">
+                {{ msg.bot }}
+            </div>
+        {% endfor %}
+    
+    </div>
+
+    <form method="POST" class="input-box">
+        <input type="text" name="message" placeholder="Décris ton état..." required>
+        <button type="submit">➤</button>
+    </form>
+
+</div>
+
+</body>
+</html>
