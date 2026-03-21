@@ -1,9 +1,12 @@
 import HealthCard from "../../components/HealthCard";
 import BottomNav from "../../components/BottomNav";
+import { useNavigate } from "react-router-dom";
 
 export default function HealthRecord() {
+  const navigate = useNavigate();
   return (
     <div style={{ padding: 16 }}>
+      <button className="back-btn" onClick={() => navigate("/")}>←</button>
 
       <h2 style={{ color: "#4f7df3" }}>Carnet de santé</h2>
 

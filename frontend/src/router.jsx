@@ -27,5 +27,5 @@ export const router = createBrowserRouter([
 
   // Aidant
   { path: "/aidant/home", element: <AidantHome /> },
-  { path: "/aidant/communities", element: <AidantCommunities /> },
+  { path: "/aidant/communities", element: <AidantCommunities /> }
 ]);

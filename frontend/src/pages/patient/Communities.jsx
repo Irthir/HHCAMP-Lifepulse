@@ -1,9 +1,12 @@
 import CommunityCard from "../../components/CommunityCard";
 import BottomNav from "../../components/BottomNav";
+import { useNavigate } from "react-router-dom";
 
 export default function Communities() {
+  const navigate = useNavigate();
   return (
     <div style={{ padding: 16 }}>
+      <button className="back-btn" onClick={() => navigate("/")}>←</button>
 
       <h2 style={{ color: "#4f7df3" }}>Communautés</h2>
 

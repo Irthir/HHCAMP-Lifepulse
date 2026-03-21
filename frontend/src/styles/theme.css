@@ -252,3 +252,31 @@ body.role-helper .nav-item.active {
   background: rgba(0,0,0,0.2);
   border-radius: 3px;
 }
+
+.back-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px; /* 👉 change en right:16px si tu veux à droite */
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  border: none;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+}
