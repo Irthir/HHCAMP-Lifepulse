@@ -168,7 +168,7 @@ body.role-helper .nav-item.active {
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 90%; /* prendra le height du parent flex */
+  height: calc(100% - 70px); /* prendra le height du parent flex */
   background: #f8f9fc;
   overflow: hidden; /* éviter scroll du container global */
 }
@@ -181,7 +181,6 @@ body.role-helper .nav-item.active {
   flex-direction: column;
   gap: 8px;
   padding-right: 8px;
-  padding-bottom: 80px; /* 🔥 espace pour le footer */
 }
 
 /* Bulles de message */
