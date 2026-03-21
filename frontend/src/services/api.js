@@ -12,8 +12,8 @@ export async function sendMessage(message) {
   return res.json();
 }
 
-export async function getPatientHistory(message) {
-  const res = await fetch(`${API_URL}/getPatientHistory/`, {
+export async function getHistory() {
+  const res = await fetch(`${API_URL}/getHistory/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,25 +24,14 @@ export async function getPatientHistory(message) {
   return res.json();
 }
 
-export async function getAidantHistory(message) {
-  const res = await fetch(`${API_URL}/getPatientHistory/`, {
+
+export async function setPartage(nId, partage) {
+  const res = await fetch(`${API_URL}/setPartage/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ message }),
-  });
-
-  return res.json();
-}
-
-export async function getProHistory(message) {
-  const res = await fetch(`${API_URL}/getPatientHistory/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ message }),
+    body: JSON.stringify({ nId, partage }),
   });
 
   return res.json();
