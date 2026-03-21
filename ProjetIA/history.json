@@ -1,0 +1,37 @@
+[
+  {
+    "id": "00001",
+    "date": "2026-03-18",
+    "titre": "fatigue",
+    "complement": "Bonjour, je me sens très fatigué ces derniers jours",
+    "partage": "O"
+  },
+  {
+    "id": "00002",
+    "date": "2026-03-19",
+    "titre": "sommeil perturbé",
+    "complement": "Depuis environ une semaine, et je dors mal",
+    "partage": "N"
+  },
+  {
+    "id": "00003",
+    "date": "2026-03-20",
+    "titre": "stress",
+    "complement": "J’ai beaucoup de stress au travail et je fais moins de sport",
+    "partage": "N"
+  },
+  {
+    "id": "00004",
+    "date": "2026-03-20",
+    "titre": "baisse activité physique",
+    "complement": "J’ai beaucoup de stress au travail et je fais moins de sport",
+    "partage": "N"
+  },
+  {
+    "id": "00005",
+    "date": "2026-03-21",
+    "titre": "changement alimentaire",
+    "complement": "Je mange plus de snacks et moins équilibré",
+    "partage": "N"
+  }
+]

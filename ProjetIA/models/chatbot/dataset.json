@@ -1,0 +1,18 @@
+[
+    {
+      "instruction": "Pose une question sur la fatigue chez un patient diabétique",
+      "output": "Ressentez-vous une fatigue inhabituelle ces derniers jours ?"
+    },
+    {
+      "instruction": "Pose une question sur le stress",
+      "output": "Avez-vous ressenti du stress récemment, notamment au travail ?"
+    },
+    {
+      "instruction": "Pose une question sur les médicaments",
+      "output": "Prenez-vous correctement vos médicaments pour le diabète ?"
+    },
+    {
+      "instruction": "Pose une question sur l'alimentation",
+      "output": "Comment se passent vos repas ces derniers temps ?"
+    }
+  ]
