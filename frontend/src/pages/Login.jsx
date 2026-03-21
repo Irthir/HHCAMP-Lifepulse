@@ -19,7 +19,7 @@ export default function Login() {
           className="role-btn blue"
           onClick={() => nav("/patient/home")}
         >
-          Patient (4 pages)
+          Patient
         </button>
 
         {/* PRO */}
@@ -27,16 +27,16 @@ export default function Login() {
           className="role-btn yellow"
           onClick={() => nav("/pro/patients")}
         >
-          Professionnel de santé (2 pages)
+          Professionnel de santé
         </button>
 
-        {/* AIDANT */}
+        {/* AIDANT 
         <button
           className="role-btn green"
           onClick={() => nav("/aidant/home")}
         >
-          Aidant (2 pages)
-        </button>
+          Aidant
+        </button>*/}
       </div>
     </div>
   );

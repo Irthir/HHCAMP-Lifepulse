@@ -17,15 +17,15 @@ export const router = createBrowserRouter([
 
   // Patient
   { path: "/patient/home", element: <PatientHome /> },
-  { path: "/patient/communities", element: <Communities /> },
-  { path: "/patient/care", element: <CarePath /> },
+  //{ path: "/patient/communities", element: <Communities /> },
+  //{ path: "/patient/care", element: <CarePath /> },
   { path: "/patient/health", element: <HealthRecord /> },
 
   // Pro
   { path: "/pro/patients", element: <ProPatients /> },
-  { path: "/pro/communities", element: <ProCommunities /> },
+  //{ path: "/pro/communities", element: <ProCommunities /> },
 
   // Aidant
-  { path: "/aidant/home", element: <AidantHome /> },
-  { path: "/aidant/communities", element: <AidantCommunities /> }
+  //{ path: "/aidant/home", element: <AidantHome /> },
+  //{ path: "/aidant/communities", element: <AidantCommunities /> }
 ]);
