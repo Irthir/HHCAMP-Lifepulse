@@ -44,7 +44,7 @@ const events = [
   { id: "3", date: "2026-02-25", titre: "Changement de travail", type: "evenement", score: -2, partage: "O",
     detail: "Nouveau poste avec horaires et responsabilités différentes." },
 
-  { id: "4", date: "2026-02-18", titre: "Horaires irrégulières", type: "humeur", score: -2, partage: "O",
+  { id: "4", date: "2026-02-24", titre: "Horaires irrégulières", type: "humeur", score: -4, partage: "O",
     detail: "Difficultés à maintenir un rythme stable à cause du travail." },
 
   { id: "5", date: "2026-02-12", titre: "Fatigue accumulée", type: "humeur", score: -3, partage: "O",
@@ -69,7 +69,7 @@ const events = [
   { id: "11", date: "2026-02-10", titre: "Repos partiel", type: "sommeil", score: 1, partage: "O",
     detail: "Repos intermédiaire mais sommeil non réparateur." },
 
-  { id: "12", date: "2026-01-30", titre: "Consultation médicale", type: "evenement", score: 1, partage: "O",
+  { id: "12", date: "2026-01-30", titre: "Consultation médicale", type: "evenement", score: 2, partage: "O",
     detail: "Contrôle médical rassurant sur la santé générale." },
 
   { id: "13", date: "2026-01-25", titre: "Petite baisse de poids", type: "poids", score: 1, partage: "O",
@@ -78,7 +78,7 @@ const events = [
   { id: "14", date: "2026-01-20", titre: "Fatigue persistante", type: "humeur", score: -2, partage: "O",
     detail: "Sentiment de fatigue continue, rythme à réguler." },
 
-  { id: "15", date: "2026-01-15", titre: "Sortie conviviale", type: "evenement", score: 2, partage: "O",
+  { id: "15", date: "2026-01-15", titre: "Sortie conviviale", type: "evenement", score: 3, partage: "O",
     detail: "Moment agréable avec amis pour relâcher le stress." },
 
   { id: "16", date: "2026-01-10", titre: "Séance de sport légère", type: "activite", score: 2, partage: "O",
@@ -213,7 +213,7 @@ const events = [
               </div>
 
               <div style={{
-                fontSize: 12,
+                fontSize: 14,
                 color: "#666"
               }}>
                 {new Date(event.date).toLocaleDateString()}

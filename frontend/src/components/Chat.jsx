@@ -30,7 +30,7 @@ export default function Chat() {
       } else {
         clearInterval(interval);
       }
-    }, 500); // 0.5 seconde entre chaque message
+    }, 750); // 0.5 seconde entre chaque message
 
     return () => clearInterval(interval);
   }, []);
