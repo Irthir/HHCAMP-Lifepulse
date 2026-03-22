@@ -13,6 +13,7 @@ export default function HealthRecord() {
       titre: "Consultation",
       complement: "Je suis allé voir mon diététicien.",
       partage: "O",
+      score : 3,
     },
     {
       id: "00002",
@@ -20,6 +21,15 @@ export default function HealthRecord() {
       titre: "Sport",
       complement: "Séance de running",
       partage: "N",
+      score : 4,
+    },
+    {
+      id: "00002",
+      date: "2026-03-01",
+      titre: "Sport",
+      complement: "J'ai séché un entraînement",
+      partage: "N",
+      score : -3,
     },
   ]);
 
