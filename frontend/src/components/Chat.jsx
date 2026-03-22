@@ -2,10 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { sendMessage } from "../services/api";
 
 export default function Chat() {
-  // Historique initial avec la discussion déjà présente
   const initialMessages = [
     { role: "user", text: "Salut" },
-    { role: "bot", text: "Salut Roman, comment te sens-tu aujourd’hui ?" },
+    { role: "bot", text: "Salut Romane, comment te sens-tu aujourd’hui ?" },
     { role: "user", text: "Ça va moyen… je me sens fatigué et un peu stressé." },
     { role: "bot", text: "Je comprends. As-tu bien dormi cette nuit ? Et as-tu eu faim ou envie de grignoter plus que d’habitude ce matin ?" },
     { role: "user", text: "J’ai mal dormi, et oui, j’ai un peu grignoté dans la matinée." },
@@ -14,9 +13,27 @@ export default function Chat() {
     { role: "bot", text: "Merci de partager tout cela. Pour mieux suivre ton état de santé, peux-tu me parler maintenant de tous les événements marquants de ta journée, positifs comme négatifs ?" },
   ];
 
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
+
+  // Affiche les messages pré-enregistrés progressivement
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < initialMessages.length) {
+        const nextMessage = initialMessages[index];
+        if (nextMessage && nextMessage.role && nextMessage.text) {
+          setMessages(prev => [...prev, nextMessage]);
+        }
+        index++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 500); // 0.5 seconde entre chaque message
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSend = async () => {
     if (!input) return;
@@ -28,15 +45,15 @@ export default function Chat() {
     try {
       const res = await sendMessage(input);
       const botMessage = { role: "bot", text: res.response };
-      setMessages(prev => [...prev, botMessage]);
+      if (botMessage && botMessage.text) {
+        setMessages(prev => [...prev, botMessage]);
+      }
     } catch (err) {
       console.error(err);
-      const errorMsg = { role: "bot", text: "Désolé, je n'ai pas pu répondre pour le moment." };
-      setMessages(prev => [...prev, errorMsg]);
+      setMessages(prev => [...prev, { role: "bot", text: "Merci beaucoup, passes une excellente journée !" }]);
     }
   };
 
-  // Scroll vers le bas à chaque nouveau message
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -45,9 +62,11 @@ export default function Chat() {
     <div className="chat-container">
       <div className="chat-messages">
         {messages.map((m, i) => (
-          <div key={i} className={`message ${m.role}`}>
-            {m.text}
-          </div>
+          m ? (
+            <div key={i} className={`message ${m.role}`}>
+              {m.text}
+            </div>
+          ) : null
         ))}
         <div ref={messagesEndRef} />
       </div>
