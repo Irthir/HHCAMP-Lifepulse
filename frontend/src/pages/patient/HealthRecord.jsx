@@ -7,97 +7,61 @@ export default function HealthRecord() {
   const navigate = useNavigate();
 
   const [events, setEvents] = useState([
-    { id: "1", date: "2026-03-20", titre: "Bonne nuit", type: "sommeil", score: 3, partage: "N",
-      detail: "Nuit complète de 8h avec un sommeil réparateur." },
+  { id: "1", date: "2026-03-20", titre: "Arrêt d'activité", type: "activite", score: -3, partage: "N",
+    detail: "Cessation temporaire des activités sportives pour cause de fatigue." },
 
-    { id: "2", date: "2026-03-18", titre: "Course", type: "activite", score: 4, partage: "N",
-      detail: "Course de 5 km avec de très bonnes sensations." },
+  { id: "2", date: "2026-03-10", titre: "Retour à la salle de sport", type: "activite", score: 3, partage: "N",
+    detail: "Reprise progressive des séances de sport en salle." },
 
-    { id: "3", date: "2026-03-15", titre: "Bonne humeur", type: "humeur", score: 3, partage: "N",
-      detail: "Journée positive avec une humeur stable et motivée." },
+  { id: "3", date: "2026-02-25", titre: "Changement de travail", type: "evenement", score: -2, partage: "N",
+    detail: "Nouveau poste avec horaires et responsabilités différentes." },
 
-    { id: "4", date: "2026-03-10", titre: "Consultation", type: "evenement", score: 1, partage: "N",
-      detail: "Consultation de routine globalement rassurante." },
+  { id: "4", date: "2026-02-18", titre: "Horaires irrégulières", type: "humeur", score: -2, partage: "N",
+    detail: "Difficultés à maintenir un rythme stable à cause du travail." },
 
-    { id: "5", date: "2026-03-05", titre: "Poids stable", type: "poids", score: 1, partage: "N",
-      detail: "Poids stable sans variation particulière cette semaine." },
+  { id: "5", date: "2026-02-12", titre: "Fatigue accumulée", type: "humeur", score: -3, partage: "N",
+    detail: "Sensation de fatigue générale sur plusieurs semaines." },
 
-    { id: "6", date: "2026-02-25", titre: "Fatigue", type: "humeur", score: -2, partage: "N",
-      detail: "Sensation de fatigue persistante toute la journée." },
+  // 🔹 Événements secondaires / médicaux
+  { id: "6", date: "2026-03-18", titre: "Petite grippe", type: "maladie", score: -2, partage: "N",
+    detail: "Fatigue et légers symptômes respiratoires." },
 
-    { id: "7", date: "2026-02-20", titre: "Rhume", type: "maladie", score: -3, partage: "N",
-      detail: "Rhume avec toux et congestion nasale." },
+  { id: "7", date: "2026-03-05", titre: "Sommeil perturbé", type: "sommeil", score: -2, partage: "N",
+    detail: "Nuits courtes avec réveils fréquents." },
 
-    { id: "8", date: "2026-02-15", titre: "Marche", type: "activite", score: 2, partage: "N",
-      detail: "Marche de 30 minutes en extérieur, agréable." },
+  { id: "8", date: "2026-02-28", titre: "Maux de tête", type: "maladie", score: -1, partage: "N",
+    detail: "Douleur légère mais récurrente en fin de journée." },
 
-    { id: "9", date: "2026-02-10", titre: "Mauvaise nuit", type: "sommeil", score: -3, partage: "N",
-      detail: "Nuit agitée avec plusieurs réveils." },
+  { id: "9", date: "2026-02-20", titre: "Marche courte", type: "activite", score: 1, partage: "N",
+    detail: "Marche de 20 minutes pour maintenir une activité légère." },
 
-    { id: "10", date: "2026-02-05", titre: "Sortie amis", type: "evenement", score: 3, partage: "N",
-      detail: "Soirée conviviale et détendue avec des amis." },
+  { id: "10", date: "2026-02-15", titre: "Journée stressante", type: "humeur", score: -2, partage: "N",
+    detail: "Stress au travail impactant le sommeil et l'énergie." },
 
-    { id: "11", date: "2026-01-28", titre: "Poids en baisse", type: "poids", score: 2, partage: "N",
-      detail: "Légère baisse de poids encourageante." },
+  { id: "11", date: "2026-02-10", titre: "Repos partiel", type: "sommeil", score: 1, partage: "N",
+    detail: "Repos intermédiaire mais sommeil non réparateur." },
 
-    { id: "12", date: "2026-01-25", titre: "Stress", type: "humeur", score: -3, partage: "N",
-      detail: "Journée stressante avec difficulté à se concentrer." },
+  { id: "12", date: "2026-01-30", titre: "Consultation médicale", type: "evenement", score: 1, partage: "N",
+    detail: "Contrôle médical rassurant sur la santé générale." },
 
-    { id: "13", date: "2026-01-20", titre: "Grippe", type: "maladie", score: -4, partage: "N",
-      detail: "Grippe avec forte fatigue et fièvre." },
+  { id: "13", date: "2026-01-25", titre: "Petite baisse de poids", type: "poids", score: 1, partage: "N",
+    detail: "Variation légère du poids, pas d'inquiétude." },
 
-    { id: "14", date: "2026-01-15", titre: "Repos", type: "sommeil", score: 1, partage: "N",
-      detail: "Temps de repos utile mais sommeil léger." },
+  { id: "14", date: "2026-01-20", titre: "Fatigue persistante", type: "humeur", score: -2, partage: "N",
+    detail: "Sentiment de fatigue continue, rythme à réguler." },
 
-    { id: "15", date: "2026-01-10", titre: "Sport", type: "activite", score: 3, partage: "N",
-      detail: "Séance de sport dynamique avec bonne énergie." },
+  { id: "15", date: "2026-01-15", titre: "Sortie conviviale", type: "evenement", score: 2, partage: "N",
+    detail: "Moment agréable avec amis pour relâcher le stress." },
 
-    { id: "16", date: "2025-12-28", titre: "Fête famille", type: "evenement", score: 4, partage: "N",
-      detail: "Moment chaleureux et joyeux en famille." },
+  { id: "16", date: "2026-01-10", titre: "Séance de sport légère", type: "activite", score: 2, partage: "N",
+    detail: "Maintien de l'activité physique malgré la fatigue." },
 
-    { id: "17", date: "2025-12-20", titre: "Motivation", type: "humeur", score: 3, partage: "N",
-      detail: "Bonne motivation et envie d’avancer sur les projets." },
+  { id: "17", date: "2025-12-28", titre: "Sommeil réparateur", type: "sommeil", score: 3, partage: "N",
+    detail: "Nuit complète et récupératrice." },
 
-    { id: "18", date: "2025-12-15", titre: "Poids +", type: "poids", score: -2, partage: "N",
-      detail: "Prise de poids ressentie comme frustrante." },
-
-    { id: "19", date: "2025-12-10", titre: "Insomnie", type: "sommeil", score: -4, partage: "N",
-      detail: "Difficulté à s’endormir avec très peu de sommeil." },
-
-    { id: "20", date: "2025-12-05", titre: "Jogging", type: "activite", score: 2, partage: "N",
-      detail: "Petit jogging malgré un manque d’énergie." },
-
-    { id: "21", date: "2025-11-28", titre: "Fatigue", type: "humeur", score: -1, partage: "N",
-      detail: "Légère fatigue mais journée gérable." },
-
-    { id: "22", date: "2025-11-25", titre: "Mal de tête", type: "maladie", score: -2, partage: "N",
-      detail: "Maux de tête persistants une partie de la journée." },
-
-    { id: "23", date: "2025-11-20", titre: "Sortie", type: "evenement", score: 1, partage: "N",
-      detail: "Sortie agréable mais un peu fatigante." },
-
-    { id: "24", date: "2025-11-15", titre: "Bonne nuit", type: "sommeil", score: 3, partage: "N",
-      detail: "Sommeil profond avec réveil en forme." },
-
-    { id: "25", date: "2025-11-10", titre: "Sport", type: "activite", score: -1, partage: "N",
-      detail: "Séance difficile avec peu de motivation." },
-
-    { id: "26", date: "2025-10-28", titre: "Poids stable", type: "poids", score: 1, partage: "N",
-      detail: "Poids globalement stable sur la période." },
-
-    { id: "27", date: "2025-10-20", titre: "Bonne humeur", type: "humeur", score: 3, partage: "N",
-      detail: "Humeur positive et détendue toute la journée." },
-
-    { id: "28", date: "2025-10-15", titre: "Rhume", type: "maladie", score: -2, partage: "N",
-      detail: "Rhume léger avec gêne respiratoire." },
-
-    { id: "29", date: "2025-10-10", titre: "Marche", type: "activite", score: 2, partage: "N",
-      detail: "Balade agréable en plein air." },
-
-    { id: "30", date: "2025-10-05", titre: "Sommeil OK", type: "sommeil", score: -1, partage: "N",
-      detail: "Sommeil correct mais peu récupérateur." },
+  { id: "18", date: "2025-12-20", titre: "Humeur positive", type: "humeur", score: 2, partage: "N",
+    detail: "Journée motivante avec bonne énergie." },
   ]);
-
   
   const [editingId, setEditingId] = useState(null); // ← Événement actuellement éditable
 
