@@ -142,8 +142,9 @@ export default function TimelinePage() {
     ((score - minScore) / (maxScore - minScore)) * 100;
 
   return (
-    <div style={{ padding: 16, height: "100vh", display: "flex", flexDirection: "column" }}>
-      <button onClick={() => navigate("/")}>←</button>
+    <div style={{ padding: 16, height: "90vh", display: "flex", flexDirection: "column" }}>
+      
+      <button className="back-btn" onClick={() => navigate("/")}>←</button>
 
       <h2 style={{ textAlign: "center" }}>Évolution sur 6 mois</h2>
 
@@ -246,7 +247,7 @@ export default function TimelinePage() {
               </div>
 
               <div style={{
-                fontSize: 10,
+                fontSize: 12,
                 color: "#666"
               }}>
                 {new Date(event.date).toLocaleDateString()}
@@ -268,14 +269,14 @@ export default function TimelinePage() {
           );
         })}
 
-        {/* dates */}
+        {(() => { today.setDate(today.getDate() - 7); return null; })()}
         <div style={{
           position: "absolute",
-          bottom: -20,
+          bottom: 0,
           width: "100%",
           display: "flex",
           justifyContent: "space-between",
-          fontSize: 12,
+          fontSize: 20,
         }}>
           <span>{minDate.toLocaleDateString()}</span>
           <span>{today.toLocaleDateString()}</span>
