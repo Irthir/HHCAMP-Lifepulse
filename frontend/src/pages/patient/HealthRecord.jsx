@@ -12,7 +12,7 @@ export default function HealthRecord() {
       date: "2026-03-21",
       titre: "Consultation",
       complement: "Je suis allé voir mon diététicien.",
-      partage: "O",
+      partage: "N",
       score : 3,
     },
     {
