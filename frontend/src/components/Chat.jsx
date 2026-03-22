@@ -2,7 +2,19 @@ import { useState, useRef, useEffect } from "react";
 import { sendMessage } from "../services/api";
 
 export default function Chat() {
-  const [messages, setMessages] = useState([]);
+  // Historique initial avec la discussion déjà présente
+  const initialMessages = [
+    { role: "user", text: "Salut" },
+    { role: "bot", text: "Salut Roman, comment te sens-tu aujourd’hui ?" },
+    { role: "user", text: "Ça va moyen… je me sens fatigué et un peu stressé." },
+    { role: "bot", text: "Je comprends. As-tu bien dormi cette nuit ? Et as-tu eu faim ou envie de grignoter plus que d’habitude ce matin ?" },
+    { role: "user", text: "J’ai mal dormi, et oui, j’ai un peu grignoté dans la matinée." },
+    { role: "bot", text: "Merci pour ces informations. As-tu ressenti des douleurs, un essoufflement ou un manque d’énergie au cours de la journée ?" },
+    { role: "user", text: "Oui, un peu d’essoufflement en marchant, et je me sens lourd aujourd’hui." },
+    { role: "bot", text: "Merci de partager tout cela. Pour mieux suivre ton état de santé, peux-tu me parler maintenant de tous les événements marquants de ta journée, positifs comme négatifs ?" },
+  ];
+
+  const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef(null);
 
