@@ -10,7 +10,7 @@ export default function TimelinePage() {
 
   const today = new Date();
   const minDate = new Date();
-  minDate.setMonth(today.getMonth() - 6);
+  minDate.setMonth(today.getMonth() - 4);
   today.setDate(today.getDate() + 7);
 
   // 🧠 catégories
