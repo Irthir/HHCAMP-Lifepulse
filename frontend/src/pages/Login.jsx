@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import lifepulse from "../assets/lifepulse.png";
 
 export default function Login() {
   const nav = useNavigate();
@@ -6,9 +7,11 @@ export default function Login() {
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
       
-      <div style={{ fontSize: 32, marginBottom: 20 }}>
-        🧡💙
-      </div>
+      <img
+        src={lifepulse}
+        alt="LifePulse"
+        style={{ width: "40vh", maxWidth: "40%", marginBottom: 20 }}
+      />
 
       <h2>Combattre la maladie ensemble</h2>
 
