@@ -1,0 +1,30 @@
+[
+  {
+    "id": "00001",
+    "date": "2026-03-18",
+    "titre": "fatigue",
+    "complement": "Je suis très fatigué et stressé",
+    "shared": true
+  },
+  {
+    "id": "00002",
+    "date": "2026-03-18",
+    "titre": "stress émotionnel",
+    "complement": "Je suis très fatigué et stressé",
+    "shared": true
+  },
+  {
+    "id": "00003",
+    "date": "2026-03-19",
+    "titre": "sommeil perturbé",
+    "complement": "Je dors mal et je me réveille souvent",
+    "shared": false
+  },
+  {
+    "id": "00004",
+    "date": "2026-03-20",
+    "titre": "grignotage",
+    "complement": "Je mange beaucoup de snacks",
+    "shared": true
+  }
+]
